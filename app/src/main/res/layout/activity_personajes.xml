@@ -5,46 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".PersonajesActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bienvenido/a!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Elige la categoria deseada: " />
+        android:text="Elige el personaje: " />
     <Button
-        android:id="@+id/btnPersonajes"
+        android:id="@+id/btnDaenerys"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="PERSONAJES"/>
+        android:text="Daenerys Targaryen"/>
     <Button
-        android:id="@+id/btnLibros"
+        android:id="@+id/btnJon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="LIBROS"/>
+        android:text="Jon Snow"/>
     <Button
-        android:id="@+id/btnCasas"
+        android:id="@+id/btnArya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="CASAS"/>
+        android:text="Arya Stark"/>
+    <Button
+        android:id="@+id/btnTyron"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Tyron Lannister"/>
 
     <Button
         android:id="@+id/btnSalir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salir"/>
-
 
 </LinearLayout>

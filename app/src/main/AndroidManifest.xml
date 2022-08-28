@@ -17,6 +17,9 @@
             android:name=".PersonajeActivity"
             android:exported="false" />
         <activity
+            android:name=".PersonajesActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
