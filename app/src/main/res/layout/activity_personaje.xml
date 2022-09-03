@@ -33,4 +33,10 @@
         android:layout_height="wrap_content"
         android:text="Cultura: " />
 
+    <Button
+        android:id="@+id/btnAtras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atrás"/>
+
 </LinearLayout>

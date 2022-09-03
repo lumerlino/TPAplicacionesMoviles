@@ -41,10 +41,10 @@
         android:text="CASAS"/>
 
     <Button
-        android:id="@+id/btnSalir"
+        android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Salir"/>
+        android:text="Cerrar Sesión"/>
 
 
 </LinearLayout>

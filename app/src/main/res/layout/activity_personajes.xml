@@ -38,9 +38,9 @@
         android:text="Tyron Lannister"/>
 
     <Button
-        android:id="@+id/btnSalir"
+        android:id="@+id/btnAtras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Salir"/>
+        android:text="Atrás"/>
 
 </LinearLayout>
