@@ -1,8 +1,10 @@
 package com.example.trabajopractico;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button btnPersonajes, btnCerrarSesion, btnCasas;
+    Toolbar mi_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         saludarUsuario();
+
+        mi_toolbar = findViewById(R.id.mi_toolbar);
+        mi_toolbar.setTitle("Home");
+        mi_toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mi_toolbar);
 
         btnPersonajes = findViewById(R.id.btnPersonajes);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
