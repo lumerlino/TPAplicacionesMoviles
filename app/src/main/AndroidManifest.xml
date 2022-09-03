@@ -26,6 +26,9 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".CasasActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

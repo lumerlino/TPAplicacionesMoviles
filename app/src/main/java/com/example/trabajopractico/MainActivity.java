@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnPersonajes, btnCerrarSesion;
+    Button btnPersonajes, btnCerrarSesion, btnCasas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnPersonajes = findViewById(R.id.btnPersonajes);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCasas = findViewById(R.id.btnCasas);
 
         btnPersonajes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent personajes_activity = new Intent(MainActivity.this, PersonajesActivity.class);
                 startActivity(personajes_activity);
                 finish();
+            }
+        });
+
+        btnCasas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("TODO","Se apretó el botón Casas");
+
+                Intent casas_activity = new Intent(MainActivity.this, CasasActivity.class);
+                startActivity(casas_activity);
             }
         });
 
