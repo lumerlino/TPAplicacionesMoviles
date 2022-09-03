@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,10 @@ public class CasasActivity extends AppCompatActivity {
         adapter = new CasaAdapter(getCasas(), new CasaAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(Casa casa) {
-                Toast.makeText(CasasActivity.this, casa.getNombre(), Toast.LENGTH_SHORT).show();
-                //redirigir a detalle de casa
+                //Toast.makeText(CasasActivity.this, casa.getNombre(), Toast.LENGTH_SHORT).show();
+                Intent casa_activity = new Intent(CasasActivity.this, CasaActivity.class);
+                casa_activity.putExtra("name",casa.getNombre());
+                startActivity(casa_activity);
             }
         });
         rvCasas.setAdapter(adapter);
@@ -46,13 +49,13 @@ public class CasasActivity extends AppCompatActivity {
 
     private List<Casa> getCasas() {
         List<Casa> casas = new ArrayList<Casa>();
-        casas.add(new Casa(1,"casa1"));
-        casas.add(new Casa(2,"casa2"));
-        casas.add(new Casa(3,"casa3"));
-        casas.add(new Casa(4,"casa4"));
-        casas.add(new Casa(5,"casa5"));
-        casas.add(new Casa(6,"casa6"));
-        casas.add(new Casa(7,"casa7"));
+        casas.add(new Casa(1,"House Algood"));
+        casas.add(new Casa(2,"House Allyrion of Godsgrace"));
+        casas.add(new Casa(3,"House Amber"));
+        casas.add(new Casa(4,"House Ambrose"));
+        casas.add(new Casa(5,"House Appleton of Appleton"));
+        casas.add(new Casa(6,"House Arryn of Gulltown"));
+        casas.add(new Casa(7,"House Arryn of the Eyrie"));
         return casas;
     }
 
