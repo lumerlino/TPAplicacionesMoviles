@@ -5,39 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_home"
     tools:context=".MainActivity">
-
     <include
         android:id="@+id/mi_toolbar"
         layout="@layout/toolbar_principal" />
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="22dp"
         android:text="Elige la categoria deseada: " />
     <Button
         android:id="@+id/btnPersonajes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@color/gray"
+
         android:text="PERSONAJES"/>
     <Button
         android:id="@+id/btnLibros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:text="LIBROS"/>
     <Button
         android:id="@+id/btnCasas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:text="CASAS"/>
 
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
         android:text="Cerrar Sesión"/>
 
 

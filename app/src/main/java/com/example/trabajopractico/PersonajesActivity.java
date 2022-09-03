@@ -33,6 +33,15 @@ public class PersonajesActivity extends AppCompatActivity {
         setSupportActionBar(mi_toolbar);
         setUpAdapter();
 
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent home_activity = new Intent(PersonajesActivity.this, MainActivity.class);
+                startActivity(home_activity);
+                finish();
+            }
+        });
+
     }
 
     private void setUpAdapter() {
