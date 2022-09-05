@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_personajes"
     tools:context=".RegistroActivity">
+    <include
+        android:id="@+id/mi_toolbar"
+        layout="@layout/toolbar_principal" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registro totalmente gratis"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,12 +62,15 @@
         android:id="@+id/btnRegistroUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:text="Registrarme"/>
 
     <Button
         android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Cancelar"/>
 
 </LinearLayout>

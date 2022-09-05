@@ -12,6 +12,7 @@ import android.widget.Button;
 public class PersonajeActivity extends AppCompatActivity {
 
     Toolbar mi_toolbar;
+    Button btnAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,17 @@ public class PersonajeActivity extends AppCompatActivity {
         mi_toolbar.setTitle(toolbar_title);
         mi_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mi_toolbar);
+
+        btnAtras = findViewById(R.id.btnAtras);
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent personajes_activity = new Intent(PersonajeActivity.this, PersonajesActivity.class);
+                startActivity(personajes_activity);
+                finish();
+            }
+        });
 
 
     }

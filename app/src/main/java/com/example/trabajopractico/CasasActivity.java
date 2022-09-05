@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ public class CasasActivity extends AppCompatActivity {
     RecyclerView rvCasas;
     CasaAdapter adapter;
     Toolbar mi_toolbar;
+    Button btnAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class CasasActivity extends AppCompatActivity {
 
     private void setUpAdapter() {
         rvCasas = findViewById(R.id.rvCasas);
+        btnAtras = findViewById(R.id.btnAtras);
 
         adapter = new CasaAdapter(getCasas(), new CasaAdapter.OnItemClickListener() {
             @Override
@@ -45,6 +51,15 @@ public class CasasActivity extends AppCompatActivity {
             }
         });
         rvCasas.setAdapter(adapter);
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent home_activity = new Intent(CasasActivity.this, MainActivity.class);
+                startActivity(home_activity);
+                finish();
+            }
+        });
     }
 
     private List<Casa> getCasas() {
@@ -57,6 +72,34 @@ public class CasasActivity extends AppCompatActivity {
         casas.add(new Casa(6,"House Arryn of Gulltown"));
         casas.add(new Casa(7,"House Arryn of the Eyrie"));
         return casas;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.item_personajes){
+            Intent personajes_activity = new Intent(CasasActivity.this, PersonajesActivity.class);
+            startActivity(personajes_activity);
+            finish();
+        }
+
+        if (item.getItemId() == R.id.item_casas){
+            Intent casas_activity = new Intent(CasasActivity.this, CasasActivity.class);
+            startActivity(casas_activity);
+            finish();
+        }
+
+        /*if (item.getItemId() == R.id.item_libros){
+            Intent libros_activity = new Intent(MainActivity.this, LibrosActivity.class);
+            startActivity(libros_activity);
+            finish();
+        }*/
+        return super.onOptionsItemSelected(item);
     }
 
 
