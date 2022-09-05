@@ -30,6 +30,7 @@ public class PersonajesActivity extends AppCompatActivity {
         mi_toolbar = findViewById(R.id.mi_toolbar);
         mi_toolbar.setTitle("Personajes");
         mi_toolbar.setTitleTextColor(Color.WHITE);
+        btnAtras = findViewById(R.id.btnAtras);
         setSupportActionBar(mi_toolbar);
         setUpAdapter();
 

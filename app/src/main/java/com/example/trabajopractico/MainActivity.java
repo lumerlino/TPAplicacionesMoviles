@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -71,5 +73,33 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Bienvenido/a "+usuario, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.item_personajes){
+            Intent personajes_activity = new Intent(MainActivity.this, PersonajesActivity.class);
+            startActivity(personajes_activity);
+            finish();
+        }
+
+        if (item.getItemId() == R.id.item_casas){
+            Intent casas_activity = new Intent(MainActivity.this, CasasActivity.class);
+            startActivity(casas_activity);
+            finish();
+        }
+
+        /*if (item.getItemId() == R.id.item_libros){
+            Intent libros_activity = new Intent(MainActivity.this, LibrosActivity.class);
+            startActivity(libros_activity);
+            finish();
+        }*/
+        return super.onOptionsItemSelected(item);
     }
 }
