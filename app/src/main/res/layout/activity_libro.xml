@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CasaActivity">
+    tools:context=".LibroActivity">
     <include
         android:id="@+id/mi_toolbar"
         layout="@layout/toolbar_principal" />
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="House Algood"/>
+                android:text="A Game of Thrones"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,12 +32,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Región: "
+                android:text="ISBN: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The Westerlands"/>
+                android:text="978-0553103540"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,12 +45,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Escudo: "
+                android:text="Autores: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A golden wreath, on a blue field with a gold border(Azure, a garland of laurel within a bordure or)"/>
+                android:text="George R. R. Martin"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,12 +58,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lema: "
+                android:text="Páginas: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Foe May Pass"/>
+                android:text="694"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,13 +71,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lord actual: "
+                android:text="Lanzamiento: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delonne Allyrion"
-                android:textColor="@color/purple_700"
+                android:text="1996-08-01"
                 />
         </LinearLayout>
         <LinearLayout
@@ -86,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Miembros leales: "
+                android:text="Personajes: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
@@ -101,22 +100,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Overlord: "
+                android:text="Punto de vista del personaje: "
                 android:textStyle="bold"></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="House Nymeros Martell of Sunspear"
+                android:text="Delonne Allyrion\nYnys Yronwood\nDaemon Sand\nRyon Allyrion"
                 android:textColor="@color/purple_700"
                 />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnAtras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Atras"/>
 
     </LinearLayout>
 </LinearLayout>

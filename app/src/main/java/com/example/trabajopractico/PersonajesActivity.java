@@ -56,7 +56,6 @@ public class PersonajesActivity extends AppCompatActivity {
                 Intent personaje_activity = new Intent(PersonajesActivity.this, PersonajeActivity.class);
                 personaje_activity.putExtra("name",personaje.getNombreCompleto());
                 startActivity(personaje_activity);
-                finish();
             }
         });
         rvPersonajes.setAdapter(adapter);
@@ -85,20 +84,20 @@ public class PersonajesActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_personajes){
             Intent personajes_activity = new Intent(PersonajesActivity.this, PersonajesActivity.class);
             startActivity(personajes_activity);
-            finish();
+
         }
 
         if (item.getItemId() == R.id.item_casas){
             Intent casas_activity = new Intent(PersonajesActivity.this, CasasActivity.class);
             startActivity(casas_activity);
-            finish();
+
         }
 
-        /*if (item.getItemId() == R.id.item_libros){
-            Intent libros_activity = new Intent(MainActivity.this, LibrosActivity.class);
+        if (item.getItemId() == R.id.item_libros){
+            Intent libros_activity = new Intent(PersonajesActivity.this, LibrosActivity.class);
             startActivity(libros_activity);
-            finish();
-        }*/
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

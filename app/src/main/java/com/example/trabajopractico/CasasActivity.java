@@ -85,20 +85,17 @@ public class CasasActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_personajes){
             Intent personajes_activity = new Intent(CasasActivity.this, PersonajesActivity.class);
             startActivity(personajes_activity);
-            finish();
         }
 
         if (item.getItemId() == R.id.item_casas){
             Intent casas_activity = new Intent(CasasActivity.this, CasasActivity.class);
             startActivity(casas_activity);
-            finish();
         }
 
-        /*if (item.getItemId() == R.id.item_libros){
-            Intent libros_activity = new Intent(MainActivity.this, LibrosActivity.class);
+        if (item.getItemId() == R.id.item_libros){
+            Intent libros_activity = new Intent(CasasActivity.this, LibrosActivity.class);
             startActivity(libros_activity);
-            finish();
-        }*/
+        }
         return super.onOptionsItemSelected(item);
     }
 

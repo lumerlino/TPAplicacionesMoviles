@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnPersonajes, btnCerrarSesion, btnCasas;
+    Button btnPersonajes, btnCerrarSesion, btnCasas, btnLibros;
     Toolbar mi_toolbar;
 
     @Override
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnPersonajes = findViewById(R.id.btnPersonajes);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnCasas = findViewById(R.id.btnCasas);
+        btnLibros = findViewById(R.id.btnLibros);
 
         btnPersonajes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent personajes_activity = new Intent(MainActivity.this, PersonajesActivity.class);
                 startActivity(personajes_activity);
-                finish();
+
             }
         });
 
@@ -52,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent casas_activity = new Intent(MainActivity.this, CasasActivity.class);
                 startActivity(casas_activity);
+            }
+        });
+
+        btnLibros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("TODO","Se apretó el botón Libros");
+
+                Intent libros_activity = new Intent(MainActivity.this, LibrosActivity.class);
+                startActivity(libros_activity);
             }
         });
 
