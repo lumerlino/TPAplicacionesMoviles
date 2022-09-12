@@ -19,7 +19,6 @@ import java.util.List;
 
 public class PersonajesActivity extends AppCompatActivity {
 
-    Button btnAtras;
     Toolbar mi_toolbar;
     RecyclerView rvPersonajes;
     PersonajeAdapter adapter;
@@ -32,18 +31,8 @@ public class PersonajesActivity extends AppCompatActivity {
         mi_toolbar = findViewById(R.id.mi_toolbar);
         mi_toolbar.setTitle("Personajes");
         mi_toolbar.setTitleTextColor(Color.WHITE);
-        btnAtras = findViewById(R.id.btnAtras);
         setSupportActionBar(mi_toolbar);
         setUpAdapter();
-
-        btnAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent home_activity = new Intent(PersonajesActivity.this, MainActivity.class);
-                startActivity(home_activity);
-                finish();
-            }
-        });
 
     }
 
@@ -81,22 +70,9 @@ public class PersonajesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.item_personajes){
-            Intent personajes_activity = new Intent(PersonajesActivity.this, PersonajesActivity.class);
-            startActivity(personajes_activity);
-
-        }
-
-        if (item.getItemId() == R.id.item_casas){
-            Intent casas_activity = new Intent(PersonajesActivity.this, CasasActivity.class);
-            startActivity(casas_activity);
-
-        }
-
-        if (item.getItemId() == R.id.item_libros){
-            Intent libros_activity = new Intent(PersonajesActivity.this, LibrosActivity.class);
-            startActivity(libros_activity);
-
+        if (item.getItemId() == R.id.item_volver){
+            Intent main_activity = new Intent(PersonajesActivity.this, MainActivity.class);
+            startActivity(main_activity);
         }
         return super.onOptionsItemSelected(item);
     }

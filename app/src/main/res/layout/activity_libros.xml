@@ -24,10 +24,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
         tools:listitem="@layout/item_libro"/>
-    <Button
-        android:id="@+id/btnAtras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Atras"/>
+
 </LinearLayout>

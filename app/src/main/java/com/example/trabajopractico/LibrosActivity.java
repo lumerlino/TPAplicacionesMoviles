@@ -20,7 +20,6 @@ public class LibrosActivity extends AppCompatActivity {
     RecyclerView rvLibros;
     LibroAdapter adapter;
     Toolbar mi_toolbar;
-    Button btnAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +27,11 @@ public class LibrosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_libros);
 
         mi_toolbar = findViewById(R.id.mi_toolbar);
-        btnAtras = findViewById(R.id.btnAtras);
         mi_toolbar.setTitle("Libros");
         mi_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mi_toolbar);
         //getSupportActionBar().setTitle("Libros");
 
-        btnAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent home_activity = new Intent(LibrosActivity.this, MainActivity.class);
-                startActivity(home_activity);
-                finish();
-            }
-        });
         setUpAdapter();
     }
 
@@ -80,19 +70,9 @@ public class LibrosActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.item_personajes){
-            Intent personajes_activity = new Intent(LibrosActivity.this, PersonajesActivity.class);
-            startActivity(personajes_activity);
-        }
-
-        if (item.getItemId() == R.id.item_casas){
-            Intent casas_activity = new Intent(LibrosActivity.this, CasasActivity.class);
-            startActivity(casas_activity);
-        }
-
-        if (item.getItemId() == R.id.item_libros){
-            Intent libros_activity = new Intent(LibrosActivity.this, LibrosActivity.class);
-            startActivity(libros_activity);
+        if (item.getItemId() == R.id.item_volver){
+            Intent main_activity = new Intent(LibrosActivity.this, MainActivity.class);
+            startActivity(main_activity);
         }
         return super.onOptionsItemSelected(item);
     }

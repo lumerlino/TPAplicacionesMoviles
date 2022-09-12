@@ -22,7 +22,6 @@ public class CasasActivity extends AppCompatActivity {
     RecyclerView rvCasas;
     CasaAdapter adapter;
     Toolbar mi_toolbar;
-    Button btnAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,6 @@ public class CasasActivity extends AppCompatActivity {
 
     private void setUpAdapter() {
         rvCasas = findViewById(R.id.rvCasas);
-        btnAtras = findViewById(R.id.btnAtras);
 
         adapter = new CasaAdapter(getCasas(), new CasaAdapter.OnItemClickListener() {
             @Override
@@ -51,15 +49,6 @@ public class CasasActivity extends AppCompatActivity {
             }
         });
         rvCasas.setAdapter(adapter);
-
-        btnAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent home_activity = new Intent(CasasActivity.this, MainActivity.class);
-                startActivity(home_activity);
-                finish();
-            }
-        });
     }
 
     private List<Casa> getCasas() {
@@ -82,19 +71,9 @@ public class CasasActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.item_personajes){
-            Intent personajes_activity = new Intent(CasasActivity.this, PersonajesActivity.class);
-            startActivity(personajes_activity);
-        }
-
-        if (item.getItemId() == R.id.item_casas){
-            Intent casas_activity = new Intent(CasasActivity.this, CasasActivity.class);
-            startActivity(casas_activity);
-        }
-
-        if (item.getItemId() == R.id.item_libros){
-            Intent libros_activity = new Intent(CasasActivity.this, LibrosActivity.class);
-            startActivity(libros_activity);
+        if (item.getItemId() == R.id.item_volver){
+            Intent main_activity = new Intent(CasasActivity.this, MainActivity.class);
+            startActivity(main_activity);
         }
         return super.onOptionsItemSelected(item);
     }

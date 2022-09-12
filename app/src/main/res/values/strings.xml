@@ -3,4 +3,6 @@
     <string name="texto_item_personajes">Personajes</string>
     <string name="texto_item_casas">Casas</string>
     <string name="texto_item_libros">Libros</string>
+    <string name="texto_item_volver">Volver</string>
+    <string name="texto_item_favorito">Favorito</string>
 </resources>

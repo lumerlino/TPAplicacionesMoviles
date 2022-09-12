@@ -27,11 +27,4 @@
         tools:itemCount="7"
         tools:listitem="@layout/item_personaje"/>
 
-    <Button
-        android:id="@+id/btnAtras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Atras"/>
-
 </LinearLayout>
