@@ -5,4 +5,5 @@
     <string name="texto_item_libros">Libros</string>
     <string name="texto_item_volver">Volver</string>
     <string name="texto_item_favorito">Favorito</string>
+    <string name="btn_guardar_personaje_fav">Agregar a Favoritos</string>
 </resources>

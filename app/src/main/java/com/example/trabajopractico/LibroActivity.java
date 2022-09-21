@@ -8,11 +8,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LibroActivity extends AppCompatActivity {
 
     Toolbar mi_toolbar;
+    TextView tvNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class LibroActivity extends AppCompatActivity {
         mi_toolbar.setTitle(toolbar_title);
         mi_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mi_toolbar);
+
+        tvNombre = findViewById(R.id.tvNombre);
     }
 
     @Override
@@ -45,7 +49,16 @@ public class LibroActivity extends AppCompatActivity {
             startActivity(libros_activity);
         }
         if (item.getItemId() == R.id.item_favorito){
-            Toast.makeText(this, "El Libro fue registrado correctamente en sus Favoritos", Toast.LENGTH_SHORT).show();
+            Libro libro = new Libro();
+            libro.setNombre(tvNombre.getText().toString());
+            try{
+                LibroManager.getInstancia(LibroActivity.this).agregarLibroFavorito(libro);
+                Toast.makeText(this, "Libro Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Intent libros_favoritos_activity = new Intent(LibroActivity.this, LibrosFavoritosActivity.class);
+            startActivity(libros_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }

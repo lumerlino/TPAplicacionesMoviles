@@ -1,7 +1,15 @@
 package com.example.trabajopractico;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "casa")
 public class Casa {
+
+    @DatabaseField(id=true)
     private Integer id;
+
+    @DatabaseField
     private String nombre;
 
     public Casa() {

@@ -10,11 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CasaActivity extends AppCompatActivity {
 
     Toolbar mi_toolbar;
+    TextView tvNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,6 @@ public class CasaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_casa);
 
         String toolbar_title = "nombre casa";
-
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null) {
             toolbar_title = bundle.getString("name");
@@ -32,6 +33,8 @@ public class CasaActivity extends AppCompatActivity {
         mi_toolbar.setTitle(toolbar_title);
         mi_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mi_toolbar);
+
+        tvNombre = findViewById(R.id.tvNombre);
 
     }
 
@@ -48,7 +51,16 @@ public class CasaActivity extends AppCompatActivity {
             startActivity(casas_activity);
         }
         if (item.getItemId() == R.id.item_favorito){
-            Toast.makeText(this, "La Casa fue registrada correctamente en sus Favoritos", Toast.LENGTH_SHORT).show();
+            Casa casa = new Casa();
+            casa.setNombre(tvNombre.getText().toString());
+            try{
+                CasaManager.getInstancia(CasaActivity.this).agregarCasaFavorito(casa);
+                Toast.makeText(this, "Casa Agregada a Favoritos", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Intent casas_favoritos_activity = new Intent(CasaActivity.this, CasasFavoritosActivity.class);
+            startActivity(casas_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }

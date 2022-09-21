@@ -22,6 +22,7 @@
                 android:text="Nombre: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A Game of Thrones"/>

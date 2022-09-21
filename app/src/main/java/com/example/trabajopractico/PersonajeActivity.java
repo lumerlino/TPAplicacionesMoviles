@@ -10,8 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class PersonajeActivity extends AppCompatActivity {
 
@@ -37,7 +40,6 @@ public class PersonajeActivity extends AppCompatActivity {
         mi_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mi_toolbar);
 
-
     }
 
     @Override
@@ -53,7 +55,16 @@ public class PersonajeActivity extends AppCompatActivity {
             startActivity(personajes_activity);
         }
        if (item.getItemId() == R.id.item_favorito){
-           Toast.makeText(this, "El Personaje fue registrado correctamente en sus Favoritos", Toast.LENGTH_SHORT).show();
+           Personaje personaje = new Personaje();
+           personaje.setNombreCompleto(tvNombre.getText().toString());
+           try{
+               PersonajeManager.getInstancia(PersonajeActivity.this).agregarPersonajeFavorito(personaje);
+               Toast.makeText(PersonajeActivity.this, "Personaje Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+           }catch (Exception e){
+               e.printStackTrace();
+           }
+           Intent personajes_favoritos_activity = new Intent(PersonajeActivity.this, PersonajesFavoritosActivity.class);
+           startActivity(personajes_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }
