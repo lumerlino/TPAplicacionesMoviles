@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void saludarUsuario() {
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null) {
-            String usuario = bundle.getString("usuario");
+            String usuario = bundle.getString(Constantes.USUARIO);
 
             Toast.makeText(this, "Bienvenido/a "+usuario, Toast.LENGTH_SHORT).show();
         }

@@ -3,6 +3,7 @@ package com.example.trabajopractico;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         cbRecordarUsuario = findViewById(R.id.cbRecordarUsuario);
         btnRegistrarUsuario = findViewById(R.id.btnRegistrarUsuario);
 
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(Constantes.SP_CREDENCIALES, MODE_PRIVATE);
+        String usuarioGuardado = prefs.getString(Constantes.USUARIO, null);
+        String passGuardada = prefs.getString(Constantes.PASSWORD, null);
+        if(usuarioGuardado != null && passGuardada != null){
+            iniciarMainActivity(usuarioGuardado);
+        }
+
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,10 +47,8 @@ public class LoginActivity extends AppCompatActivity {
                 if(usuario.isEmpty() || password.isEmpty()){
                     Toast.makeText(LoginActivity.this, "Por favor, completar datos", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent main_activity = new Intent(LoginActivity.this, MainActivity.class);
-                    main_activity.putExtra("usuario",usuario);
-                    startActivity(main_activity);
-                    finish();
+                    login(usuario, password);
+
                 }
             }
         });
@@ -58,5 +64,23 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void login(String usuario, String password){
+        if(cbRecordarUsuario.isChecked()){
+            SharedPreferences prefs = getApplicationContext().getSharedPreferences(Constantes.SP_CREDENCIALES, MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(Constantes.USUARIO, usuario);
+            editor.putString(Constantes.PASSWORD, password);
+            editor.apply();
+        }
+        iniciarMainActivity(usuario);
+    }
+
+    private void iniciarMainActivity(String usuarioGuardado) {
+        Intent main_activity = new Intent(LoginActivity.this, MainActivity.class);
+        main_activity.putExtra(Constantes.USUARIO,usuarioGuardado);
+        startActivity(main_activity);
+        finish();
     }
 }
