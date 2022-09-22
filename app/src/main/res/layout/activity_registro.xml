@@ -15,18 +15,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre: "/>
+        android:text="Nombre Completo: "/>
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etNombreCompleto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Apellido: "/>
+        android:text="Fecha de Nacimiento: "/>
     <EditText
-        android:id="@+id/etApellido"
+        android:id="@+id/etFechaNacimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"/>
@@ -64,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
+        android:textSize="20dp"
         android:text="Registrarme"/>
 
     <Button

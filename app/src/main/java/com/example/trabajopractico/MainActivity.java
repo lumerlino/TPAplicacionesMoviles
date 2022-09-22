@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i("TODO","Se apretó el botón Cerrar Sesion");
 
+
                 Intent login_activity = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(login_activity);
                 finish();
