@@ -25,7 +25,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@color/gray"
-
         android:text="PERSONAJES"/>
     <Button
         android:id="@+id/btnLibros"
@@ -41,13 +40,5 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="CASAS"/>
-
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Cerrar Sesión"/>
-
 
 </LinearLayout>

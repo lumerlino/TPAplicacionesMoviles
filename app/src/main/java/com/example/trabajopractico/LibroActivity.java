@@ -57,8 +57,6 @@ public class LibroActivity extends AppCompatActivity {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            Intent libros_favoritos_activity = new Intent(LibroActivity.this, LibrosFavoritosActivity.class);
-            startActivity(libros_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }

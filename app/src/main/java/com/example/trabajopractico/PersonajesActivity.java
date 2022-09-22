@@ -41,7 +41,6 @@ public class PersonajesActivity extends AppCompatActivity {
         adapter = new PersonajeAdapter(getPersonajes(), new PersonajeAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(Personaje personaje) {
-                //Toast.makeText(PersonajesActivity.this, personaje.getNombreCompleto(), Toast.LENGTH_SHORT).show();
                 Intent personaje_activity = new Intent(PersonajesActivity.this, PersonajeActivity.class);
                 personaje_activity.putExtra("name",personaje.getNombreCompleto());
                 startActivity(personaje_activity);

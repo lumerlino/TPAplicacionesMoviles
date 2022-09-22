@@ -15,11 +15,14 @@
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/activity_personajes.xml" value="0.25" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/activity_personajes_favoritos.xml" value="0.1" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/activity_registro.xml" value="0.25" />
+        <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/header_navigation_drawer.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/item_casa.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/item_personaje.xml" value="0.2" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/layout/toolbar_principal.xml" value="0.16802536231884058" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/menu/menu_favorito.xml" value="0.203125" />
         <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/menu/menu_main.xml" value="0.203125" />
+        <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/menu/menu_nav.xml" value="0.203125" />
+        <entry key="..\:/Users/lucia.merlino/AndroidStudioProjects/TrabajoPractico/app/src/main/res/menu/nav_options.xml" value="0.203125" />
       </map>
     </option>
   </component>

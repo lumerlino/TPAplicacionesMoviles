@@ -63,8 +63,6 @@ public class PersonajeActivity extends AppCompatActivity {
            }catch (Exception e){
                e.printStackTrace();
            }
-           Intent personajes_favoritos_activity = new Intent(PersonajeActivity.this, PersonajesFavoritosActivity.class);
-           startActivity(personajes_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }

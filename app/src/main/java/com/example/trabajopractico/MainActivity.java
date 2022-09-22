@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnPersonajes, btnCerrarSesion, btnCasas, btnLibros;
+    Button btnPersonajes, btnCasas, btnLibros;
     Toolbar mi_toolbar;
 
     @Override
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mi_toolbar);
 
         btnPersonajes = findViewById(R.id.btnPersonajes);
-        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnCasas = findViewById(R.id.btnCasas);
         btnLibros = findViewById(R.id.btnLibros);
 
@@ -65,18 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(libros_activity);
             }
         });
-
-        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i("TODO","Se apretó el botón Cerrar Sesion");
-
-
-                Intent login_activity = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(login_activity);
-                finish();
-            }
-        });
     }
     private void saludarUsuario() {
         Bundle bundle = getIntent().getExtras();
@@ -86,4 +73,38 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Bienvenido/a "+usuario, Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_nav, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menuPersonajesFavoritos:
+                Intent personajes_activity = new Intent(MainActivity.this, PersonajesFavoritosActivity.class);
+                startActivity(personajes_activity);
+                finish();
+                break;
+            case R.id.menuLibrosFavoritos:
+                Intent libros_activity = new Intent(MainActivity.this, LibrosFavoritosActivity.class);
+                startActivity(libros_activity);
+                finish();
+                break;
+            case R.id.menuCasasFavoritas:
+                Intent casas_activity = new Intent(MainActivity.this, CasasFavoritosActivity.class);
+                startActivity(casas_activity);
+                finish();
+                break;
+            case R.id.menuSalir:
+                Intent login_activity = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login_activity);
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

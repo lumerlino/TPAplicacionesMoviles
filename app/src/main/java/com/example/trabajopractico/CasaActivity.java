@@ -59,8 +59,6 @@ public class CasaActivity extends AppCompatActivity {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            Intent casas_favoritos_activity = new Intent(CasaActivity.this, CasasFavoritosActivity.class);
-            startActivity(casas_favoritos_activity);
         }
         return super.onOptionsItemSelected(item);
     }
