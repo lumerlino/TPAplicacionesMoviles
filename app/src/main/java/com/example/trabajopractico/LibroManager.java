@@ -16,12 +16,14 @@ public class LibroManager {
     public LibroManager() {}
 
     public LibroManager(Context context){
-        OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperLibro.class);
         try{
+            OpenHelperManager.setOpenHelperClass(null);
+            OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperLibro.class);
             dao = helper.getDao(Libro.class);
         }catch (SQLException e){
             e.printStackTrace();
         }
+        OpenHelperManager.releaseHelper();
     }
 
     public static LibroManager getInstancia(Context context) {
@@ -45,5 +47,11 @@ public class LibroManager {
 
     public void agregarLibroFavorito(Libro libro) throws Exception{
         dao.create(libro);
+    }
+    public Libro getLibroFavorito(int id) throws Exception{
+        return dao.queryForId(id);
+    }
+    public int deleteLibroFavorito(int id) throws Exception{
+        return dao.deleteById(id);
     }
 }

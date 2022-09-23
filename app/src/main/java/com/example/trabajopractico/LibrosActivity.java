@@ -44,6 +44,7 @@ public class LibrosActivity extends AppCompatActivity {
                 //Toast.makeText(LibrosActivity.this, libro.getNombre(), Toast.LENGTH_SHORT).show();
                 Intent libro_activity = new Intent(LibrosActivity.this, LibroActivity.class);
                 libro_activity.putExtra("name",libro.getNombre());
+                libro_activity.putExtra("id",libro.getId().toString());
                 startActivity(libro_activity);
             }
         });
@@ -71,8 +72,7 @@ public class LibrosActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent main_activity = new Intent(LibrosActivity.this, MainActivity.class);
-            startActivity(main_activity);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -45,6 +45,7 @@ public class CasasActivity extends AppCompatActivity {
                 //Toast.makeText(CasasActivity.this, casa.getNombre(), Toast.LENGTH_SHORT).show();
                 Intent casa_activity = new Intent(CasasActivity.this, CasaActivity.class);
                 casa_activity.putExtra("name",casa.getNombre());
+                casa_activity.putExtra("id",casa.getId().toString());
                 startActivity(casa_activity);
             }
         });
@@ -72,8 +73,7 @@ public class CasasActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent main_activity = new Intent(CasasActivity.this, MainActivity.class);
-            startActivity(main_activity);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

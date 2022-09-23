@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -86,20 +87,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menuPersonajesFavoritos:
                 Intent personajes_activity = new Intent(MainActivity.this, PersonajesFavoritosActivity.class);
                 startActivity(personajes_activity);
-                finish();
                 break;
             case R.id.menuLibrosFavoritos:
                 Intent libros_activity = new Intent(MainActivity.this, LibrosFavoritosActivity.class);
                 startActivity(libros_activity);
-                finish();
                 break;
             case R.id.menuCasasFavoritas:
                 Intent casas_activity = new Intent(MainActivity.this, CasasFavoritosActivity.class);
                 startActivity(casas_activity);
-                finish();
                 break;
             case R.id.menuSalir:
                 Intent login_activity = new Intent(MainActivity.this, LoginActivity.class);
+                SharedPreferences prefs = getApplicationContext().getSharedPreferences(Constantes.SP_CREDENCIALES, MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.remove(Constantes.USUARIO);
+                editor.remove(Constantes.PASSWORD);
+                //editor.putString(Constantes.USUARIO, null);
+                //editor.putString(Constantes.PASSWORD, null);
+                editor.apply();
                 startActivity(login_activity);
                 finish();
                 break;

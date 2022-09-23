@@ -16,12 +16,15 @@ public class UsuarioManager {
     public UsuarioManager(){}
 
     public UsuarioManager (Context context){
-        OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperUsuario.class);
+
         try{
+            OpenHelperManager.setOpenHelperClass(null);
+            OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperUsuario.class);
             dao = helper.getDao(Usuario.class);
         }catch (SQLException e){
             e.printStackTrace();
         }
+        OpenHelperManager.releaseHelper();
     }
 
     public static UsuarioManager getInstancia(Context context){

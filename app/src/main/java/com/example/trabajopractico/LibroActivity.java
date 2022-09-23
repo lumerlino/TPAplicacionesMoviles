@@ -45,15 +45,27 @@ public class LibroActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent libros_activity = new Intent(LibroActivity.this, LibrosActivity.class);
-            startActivity(libros_activity);
+            finish();
         }
         if (item.getItemId() == R.id.item_favorito){
-            Libro libro = new Libro();
-            libro.setNombre(tvNombre.getText().toString());
+            LibroManager manager = LibroManager.getInstancia(LibroActivity.this);
+            Libro libro = null;
+            Bundle bundle = getIntent().getExtras();
+            if (bundle!=null) {
+                libro = new Libro( Integer.parseInt(bundle.getString("id")) ,bundle.getString("name")) ;
+            }
             try{
-                LibroManager.getInstancia(LibroActivity.this).agregarLibroFavorito(libro);
-                Toast.makeText(this, "Libro Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+                if(libro!=null){
+                    Libro libroGuardado = manager.getLibroFavorito(libro.getId());
+                    if(libroGuardado == null){
+                        manager.agregarLibroFavorito(libro);
+                        Toast.makeText(LibroActivity.this, "Libro Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+                    }else{
+                        manager.deleteLibroFavorito(libro.getId());
+                        Toast.makeText(LibroActivity.this, "Libro Eliminado de Favoritos", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -12,16 +12,19 @@ import java.util.List;
 public class CasaManager {
     private static CasaManager instancia;
     Dao<Casa, Integer> dao;
+    OrmLiteSqliteOpenHelper helper;
 
     public CasaManager() {}
 
     public CasaManager(Context context){
-        OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperCasa.class);
         try{
+            OpenHelperManager.setOpenHelperClass(null);
+            helper = OpenHelperManager.getHelper(context, DBHelperCasa.class);
             dao = helper.getDao(Casa.class);
-        }catch (SQLException e){
+        }catch (SQLException e) {
             e.printStackTrace();
         }
+        OpenHelperManager.releaseHelper();
     }
 
     public static CasaManager getInstancia(Context context) {
@@ -46,4 +49,11 @@ public class CasaManager {
     public void agregarCasaFavorito(Casa casa) throws Exception{
         dao.create(casa);
     }
+    public Casa getCasaFavorito(int id) throws Exception{
+        return dao.queryForId(id);
+    }
+    public int deleteCasaFavorito(int id) throws Exception{
+        return dao.deleteById(id);
+    }
+
 }

@@ -38,6 +38,7 @@ public class LibrosFavoritosActivity extends AppCompatActivity {
             public void onItemClickListener(Libro libro) {
                 Intent libros_favoritos_activity = new Intent(LibrosFavoritosActivity.this, LibroActivity.class);
                 libros_favoritos_activity.putExtra("name",libro.getNombre());
+                libros_favoritos_activity.putExtra("id",libro.getId().toString());
                 startActivity(libros_favoritos_activity);
             }
         });
@@ -62,8 +63,7 @@ public class LibrosFavoritosActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent libro_activity = new Intent(LibrosFavoritosActivity.this, LibroActivity.class);
-            startActivity(libro_activity);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

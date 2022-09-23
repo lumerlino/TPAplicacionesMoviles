@@ -51,15 +51,27 @@ public class PersonajeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent personajes_activity = new Intent(PersonajeActivity.this, PersonajesActivity.class);
-            startActivity(personajes_activity);
+            finish();
         }
        if (item.getItemId() == R.id.item_favorito){
-           Personaje personaje = new Personaje();
-           personaje.setNombreCompleto(tvNombre.getText().toString());
+           PersonajeManager manager = PersonajeManager.getInstancia(PersonajeActivity.this);
+           Personaje personaje = null;
+           Bundle bundle = getIntent().getExtras();
+           if (bundle!=null) {
+               personaje = new Personaje( Integer.parseInt(bundle.getString("id")) ,bundle.getString("name")) ;
+           }
            try{
-               PersonajeManager.getInstancia(PersonajeActivity.this).agregarPersonajeFavorito(personaje);
-               Toast.makeText(PersonajeActivity.this, "Personaje Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+               if(personaje!=null){
+                   Personaje personajeGuardado = manager.getPersonajeFavorito(personaje.getId());
+                   if(personajeGuardado == null){
+                       manager.agregarPersonajeFavorito(personaje);
+                       Toast.makeText(PersonajeActivity.this, "Personaje Agregado a Favoritos", Toast.LENGTH_SHORT).show();
+                   }else{
+                       manager.deletePersonajeFavorito(personaje.getId());
+                       Toast.makeText(PersonajeActivity.this, "Personaje Eliminado de Favoritos", Toast.LENGTH_SHORT).show();
+                   }
+
+               }
            }catch (Exception e){
                e.printStackTrace();
            }

@@ -33,11 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         btnRegistrarUsuario = findViewById(R.id.btnRegistrarUsuario);
 
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(Constantes.SP_CREDENCIALES, MODE_PRIVATE);
-        /*String usuarioGuardado = prefs.getString(Constantes.USUARIO, null);
-        String passGuardada = prefs.getString(Constantes.PASSWORD, null);*/
-
-        String usuarioGuardado = null;
-        String passGuardada = null;
+        String usuarioGuardado = prefs.getString(Constantes.USUARIO, null);
+        String passGuardada = prefs.getString(Constantes.PASSWORD, null);
 
         if(usuarioGuardado != null && passGuardada != null){
             iniciarMainActivity(usuarioGuardado);

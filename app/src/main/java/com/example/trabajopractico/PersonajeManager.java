@@ -16,12 +16,14 @@ public class PersonajeManager {
     public PersonajeManager() {}
 
     public PersonajeManager(Context context){
-        OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperPersonaje.class);
         try{
+            OpenHelperManager.setOpenHelperClass(null);
+            OrmLiteSqliteOpenHelper helper = OpenHelperManager.getHelper(context, DBHelperPersonaje.class);
             dao = helper.getDao(Personaje.class);
         }catch (SQLException e){
             e.printStackTrace();
         }
+        OpenHelperManager.releaseHelper();
     }
 
     public static PersonajeManager getInstancia(Context context){
@@ -41,6 +43,12 @@ public class PersonajeManager {
 
     public List<Personaje> getPersonajesFavoritos() throws Exception{
         return dao.queryForAll();
+    }
+    public Personaje getPersonajeFavorito(int id) throws Exception{
+        return dao.queryForId(id);
+    }
+    public int deletePersonajeFavorito(int id) throws Exception{
+        return dao.deleteById(id);
     }
 
     public void agregarPersonajeFavorito(Personaje personaje) throws Exception{

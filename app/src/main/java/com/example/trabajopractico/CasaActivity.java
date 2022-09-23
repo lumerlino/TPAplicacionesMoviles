@@ -47,15 +47,27 @@ public class CasaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent casas_activity = new Intent(CasaActivity.this, CasasActivity.class);
-            startActivity(casas_activity);
+            finish();
         }
         if (item.getItemId() == R.id.item_favorito){
-            Casa casa = new Casa();
-            casa.setNombre(tvNombre.getText().toString());
+            CasaManager manager = CasaManager.getInstancia(CasaActivity.this);
+            Casa casa = null;
+            Bundle bundle = getIntent().getExtras();
+            if (bundle!=null) {
+                casa = new Casa( Integer.parseInt(bundle.getString("id")) ,bundle.getString("name")) ;
+            }
             try{
-                CasaManager.getInstancia(CasaActivity.this).agregarCasaFavorito(casa);
-                Toast.makeText(this, "Casa Agregada a Favoritos", Toast.LENGTH_SHORT).show();
+                if(casa!=null){
+                    Casa casaGuardado = manager.getCasaFavorito(casa.getId());
+                    if(casaGuardado == null){
+                        manager.agregarCasaFavorito(casa);
+                        Toast.makeText(CasaActivity.this, "Casa Agregada a Favoritos", Toast.LENGTH_SHORT).show();
+                    }else{
+                        manager.deleteCasaFavorito(casa.getId());
+                        Toast.makeText(CasaActivity.this, "Casa Eliminada de Favoritos", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }

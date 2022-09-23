@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Libro {
 
     @DatabaseField(id=true)
-    private int id;
+    private Integer id;
 
     @DatabaseField
     private String nombre;
@@ -20,11 +20,11 @@ public class Libro {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

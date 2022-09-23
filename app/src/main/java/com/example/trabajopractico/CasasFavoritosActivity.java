@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +38,9 @@ public class CasasFavoritosActivity extends AppCompatActivity {
         adapter = new CasaAdapter(getCasasFavoritos(), new CasaAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(Casa casa) {
-                Intent casas_favoritos_activity = new Intent(CasasFavoritosActivity.this, PersonajeActivity.class);
+                Intent casas_favoritos_activity = new Intent(CasasFavoritosActivity.this, CasaActivity.class);
                 casas_favoritos_activity.putExtra("name",casa.getNombre());
+                casas_favoritos_activity.putExtra("id",casa.getId().toString());
                 startActivity(casas_favoritos_activity);
             }
         });
@@ -46,7 +49,9 @@ public class CasasFavoritosActivity extends AppCompatActivity {
 
     private List<Casa> getCasasFavoritos() {
         try{
-            return CasaManager.getInstancia(CasasFavoritosActivity.this).getCasasFavoritos();
+            CasaManager ins = CasaManager.getInstancia(CasasFavoritosActivity.this);
+            List<Casa> res = ins.getCasasFavoritos();
+            return res;
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -62,9 +67,14 @@ public class CasasFavoritosActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent casa_activity = new Intent(CasasFavoritosActivity.this, CasaActivity.class);
-            startActivity(casa_activity);
+            finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public  void onDestroy() {
+
+        super.onDestroy();
+        OpenHelperManager.releaseHelper();
     }
 }

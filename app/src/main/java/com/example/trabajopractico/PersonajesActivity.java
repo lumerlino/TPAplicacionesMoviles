@@ -43,6 +43,7 @@ public class PersonajesActivity extends AppCompatActivity {
             public void onItemClickListener(Personaje personaje) {
                 Intent personaje_activity = new Intent(PersonajesActivity.this, PersonajeActivity.class);
                 personaje_activity.putExtra("name",personaje.getNombreCompleto());
+                personaje_activity.putExtra("id",personaje.getId().toString());
                 startActivity(personaje_activity);
             }
         });
@@ -70,8 +71,7 @@ public class PersonajesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.item_volver){
-            Intent main_activity = new Intent(PersonajesActivity.this, MainActivity.class);
-            startActivity(main_activity);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
