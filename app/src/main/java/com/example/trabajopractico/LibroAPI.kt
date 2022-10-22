@@ -7,4 +7,7 @@ import retrofit2.http.Path
 interface LibroAPI {
     @GET("books/{id}")
     fun getLibro(@Path("id") id: Int) : Call<LibroData>
+
+    @GET("books")
+    fun getLibros() : Call<List<LibroData>>
 }

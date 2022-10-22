@@ -29,10 +29,12 @@ class LibroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_libro)
+        var libroId = 0
         var toolbar_title = "nombre libro"
         val bundle = intent.extras
         if (bundle != null) {
             toolbar_title = bundle.getString("name").toString()
+            libroId = bundle.getString("id").toString().toInt()
         }
         miToolbar = findViewById(R.id.mi_toolbar)
         miToolbar.setTitle(toolbar_title)
@@ -47,7 +49,7 @@ class LibroActivity : AppCompatActivity() {
         tvReleased = findViewById(R.id.tvReleased)
 
         val api = RetrofitClient.retrofit.create(LibroAPI::class.java)
-        val callGetLibro = api.getLibro(2)
+        val callGetLibro = api.getLibro(libroId)
         callGetLibro.enqueue(object : retrofit2.Callback<LibroData>{
             override fun onResponse(call: Call<LibroData>, response : Response<LibroData>){
                 val libro = response.body()
