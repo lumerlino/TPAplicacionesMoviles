@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.trabajopractico.R
@@ -11,11 +12,19 @@ import com.example.trabajopractico.LibroManager
 import com.example.trabajopractico.Libro
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import retrofit2.Call
+import retrofit2.Response
 import java.lang.Exception
 
 class LibroActivity : AppCompatActivity() {
     private lateinit var miToolbar: Toolbar
-    private lateinit var tvNombre: TextView
+    private lateinit var tvName: TextView
+    private lateinit var tvIsbn: TextView
+    private lateinit var tvNumberOfPages: TextView
+    private lateinit var tvPublisher: TextView
+    private lateinit var tvCountry: TextView
+    private lateinit var tvMediaType: TextView
+    private lateinit var tvReleased: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +38,39 @@ class LibroActivity : AppCompatActivity() {
         miToolbar.setTitle(toolbar_title)
         miToolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(miToolbar)
-        tvNombre = findViewById(R.id.tvNombre)
+        tvName = findViewById(R.id.tvName)
+        tvIsbn = findViewById(R.id.tvIsbn)
+        tvNumberOfPages = findViewById(R.id.tvNumberOfPages)
+        tvPublisher = findViewById(R.id.tvPublisher)
+        tvCountry = findViewById(R.id.tvCountry)
+        tvMediaType = findViewById(R.id.tvMediaType)
+        tvReleased = findViewById(R.id.tvReleased)
+
+        val api = RetrofitClient.retrofit.create(LibroAPI::class.java)
+        val callGetLibro = api.getLibro(2)
+        callGetLibro.enqueue(object : retrofit2.Callback<LibroData>{
+            override fun onResponse(call: Call<LibroData>, response : Response<LibroData>){
+                val libro = response.body()
+                if(libro != null){
+                    Log.d("REST", libro.toString())
+                    setDataToView(libro)
+                }
+            }
+            override fun onFailure(call: Call<LibroData>, t : Throwable){
+                Log.e("REST", t.message?:"")
+            }
+        }
+        )
+    }
+
+    private fun setDataToView(libro: LibroData) {
+        tvName.text = libro.name
+        tvIsbn.text = libro.isbn
+        tvNumberOfPages.text = libro.numberOfPages.toString()
+        tvPublisher.text = libro.publisher
+        tvCountry.text = libro.country
+        tvMediaType.text = libro.mediaType
+        tvReleased.text = libro.released
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

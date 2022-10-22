@@ -22,10 +22,10 @@
                 android:text="Nombre: "
                 android:textStyle="bold"></TextView>
             <TextView
-                android:id="@+id/tvNombre"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A Game of Thrones"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,9 +36,10 @@
                 android:text="ISBN: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvIsbn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="978-0553103540"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="George R. R. Martin"/>
+                android:text="[TODO]"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,9 +63,55 @@
                 android:text="Páginas: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvNumberOfPages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="694"/>
+                android:text="cargando..."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publisher: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvPublisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pais: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MediaType: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvMediaType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,9 +122,10 @@
                 android:text="Lanzamiento: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvReleased"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1996-08-01"
+                android:text="cargando..."
                 />
         </LinearLayout>
         <LinearLayout
