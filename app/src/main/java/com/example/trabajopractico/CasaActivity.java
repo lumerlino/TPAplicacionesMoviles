@@ -61,7 +61,7 @@ public class CasaActivity extends AppCompatActivity {
                     Casa casaGuardado = manager.getCasaFavorito(casa.getId());
                     if(casaGuardado == null){
                         manager.agregarCasaFavorito(casa);
-                        Toast.makeText(CasaActivity.this, "Casa Agregada a Favoritos", Toast.LENGTH_SHORT).show();
+                        ExtensionesKt.mensajeCorto(CasaActivity.this, "Casa Agregada a Favoritos");
                     }else{
                         manager.deleteCasaFavorito(casa.getId());
                         Toast.makeText(CasaActivity.this, "Casa Eliminada de Favoritos", Toast.LENGTH_SHORT).show();
