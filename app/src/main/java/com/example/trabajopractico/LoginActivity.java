@@ -1,9 +1,17 @@
 package com.example.trabajopractico;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText etUsuario, etPassword;
     Button btnIniciarSesion, btnRegistrarUsuario;
     CheckBox cbRecordarUsuario;
+
+    private PendingIntent pendingIntent;
+    private final static String CHANNEL_ID = "NOTIFICACION";
+    private final static int NOTIFICACION_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +80,14 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("TODO","Se apretó el botón Registrar Usuario");
                 Intent registro_activity = new Intent(LoginActivity.this, RegistroActivity.class);
                 startActivity(registro_activity);
+            }
+        });
+
+        cbRecordarUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNotificationChannel();
+                createNotificacion();
             }
         });
 
@@ -124,5 +144,34 @@ public class LoginActivity extends AppCompatActivity {
         main_activity.putExtra(Constantes.USUARIO,usuarioGuardado);
         startActivity(main_activity);
         finish();
+    }
+
+    private void createNotificacion(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_remember_user);
+        if(cbRecordarUsuario.isChecked()){
+            builder.setContentTitle("HOLA !");
+            builder.setContentText("Recordaremos tu usuario");
+        }else{
+            builder.setContentTitle("HOLA !");
+            builder.setContentText("NO recordaremos tu usuario");
+        }
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setLights(Color.MAGENTA, 1000, 1000);
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+
+    }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "Notificacion";
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 }
