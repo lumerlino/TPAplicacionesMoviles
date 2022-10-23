@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -22,8 +23,8 @@ class CasasActivity : AppCompatActivity() {
     private lateinit var rvCasas: RecyclerView
     private lateinit var adapter: CasaAdapter
     private lateinit var mi_toolbar: Toolbar
-    private lateinit var btnNext: Button
-    private lateinit var btnPrevious: Button
+    private lateinit var btnNext: ImageButton
+    private lateinit var btnPrevious: ImageButton
     private lateinit var tvPag: TextView
     private var page: Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,9 +44,11 @@ class CasasActivity : AppCompatActivity() {
         setUpAdapter(page)
 
         btnNext.setOnClickListener(View.OnClickListener {
-            page += 1
-            Log.d("REST", "PAGINA NUEVA A PEDIR = $page")
-            setUpAdapter(page)
+            if(page<9) {
+                page += 1
+                Log.d("REST", "PAGINA NUEVA A PEDIR = $page")
+                setUpAdapter(page)
+            }
         })
         btnPrevious.setOnClickListener(View.OnClickListener {
             if(page!=1) {
