@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item_volver"
-        android:title="@string/texto_item_volver"
+        android:id="@+id/item_home"
+        android:title="@string/texto_item_favorito"
         app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_arrow_back_24"
-        />
+        android:icon="@drawable/ic_baseline_home_24"/>
     <item
         android:id="@+id/item_favorito"
         android:title="@string/texto_item_favorito"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_star_24"/>
+    <item
+        android:id="@+id/item_volver"
+        android:title="@string/texto_item_volver"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        />
 </menu>

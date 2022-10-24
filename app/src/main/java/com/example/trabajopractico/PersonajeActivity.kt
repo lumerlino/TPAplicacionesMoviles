@@ -1,5 +1,6 @@
 package com.example.trabajopractico
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
@@ -134,6 +135,12 @@ class PersonajeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_home) {
+            val newIntent = Intent(this, MainActivity::class.java)
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(newIntent)
+        }
         if (item.itemId == R.id.item_volver) {
             finish()
         }
