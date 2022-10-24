@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menuPersonajesFavoritos"
+            android:title="Personajes Favoritos"
+            android:icon="@drawable/ic_baseline_people_alt_24"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menuLibrosFavoritos"
+            android:title="Libros Favoritos"
+            android:icon="@drawable/ic_baseline_library_books_24"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menuCasasFavoritas"
+            android:title="Casas Favoritas"
+            android:icon="@drawable/ic_baseline_account_balance_24"
+            app:showAsAction="always"/>
+    </group>
 
-    <item
-        android:id="@+id/menuPersonajesFavoritos"
-        android:title="Personajes Favoritos"
-        android:icon="@drawable/ic_baseline_people_alt_24"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/menuLibrosFavoritos"
-        android:title="Libros Favoritos"
-        android:icon="@drawable/ic_baseline_library_books_24"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/menuCasasFavoritas"
-        android:title="Casas Favoritas"
-        android:icon="@drawable/ic_baseline_account_balance_24"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/menuSalir"
-        android:title="Salir"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"
-        app:showAsAction="always"/>
+    <item android:title="Otras opciones">
+        <menu>
+            <item
+                android:id="@+id/menuSalir"
+                android:title="Salir"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+
+
 </menu>
