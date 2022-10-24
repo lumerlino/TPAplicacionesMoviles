@@ -77,4 +77,9 @@ public class CasasFavoritosActivity extends AppCompatActivity {
         super.onDestroy();
         OpenHelperManager.releaseHelper();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpAdapter();
+    }
 }
