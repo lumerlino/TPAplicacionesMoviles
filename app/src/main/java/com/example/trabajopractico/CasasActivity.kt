@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trabajopractico.cache.CasaDataManager
 import com.example.trabajopractico.cache.CasaPage
 import com.example.trabajopractico.cache.CasaPageManager
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Response
+
 
 class CasasActivity : AppCompatActivity() {
     private lateinit var rvCasas: RecyclerView
@@ -79,12 +80,19 @@ class CasasActivity : AppCompatActivity() {
                         }
                         else{
                             Log.d("REST", casasData.toString())
-
+                            val gson = Gson()
                             for(casa in casasData){
-                                val libToAdd = Casa(casa.url.takeLastWhile{ caracter -> caracter!='/' }.toInt(),casa.name)
+                                val newCasaId = casa.url.takeLastWhile{ caracter -> caracter!='/' }.toInt()
+                                val libToAdd = Casa(newCasaId,casa.name)
                                 casas.add(libToAdd)
                                 //guardado en la base para cache:
                                 casa.page = pag
+                                casa.id = newCasaId
+                                casa.titlesString = gson.toJson(casa.titles)
+                                casa.seatsString = gson.toJson(casa.seats)
+                                casa.ancestralWeaponsString = gson.toJson(casa.ancestralWeapons)
+                                casa.swornMembersString = gson.toJson(casa.swornMembers)
+                                casa.cadetBranchesString = gson.toJson(casa.cadetBranches)
                                 insCasaDataMan.agregarCasaData(casa)
                             }
 

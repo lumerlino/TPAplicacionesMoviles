@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".CasaActivity">
     <include
         android:id="@+id/mi_toolbar"
         layout="@layout/toolbar_principal" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,10 +25,10 @@
                 android:text="Nombre: "
                 android:textStyle="bold"></TextView>
             <TextView
-                android:id="@+id/tvNombre"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="House Algood"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,9 +39,10 @@
                 android:text="Región: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvRegion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The Westerlands"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,9 +53,10 @@
                 android:text="Escudo: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvCoatOfArms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A golden wreath, on a blue field with a gold border(Azure, a garland of laurel within a bordure or)"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,9 +67,38 @@
                 android:text="Lema: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Foe May Pass"/>
+                android:text="cargando..."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Títulos: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvTitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seats: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,9 +109,10 @@
                 android:text="Lord actual: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvCurrentLord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delonne Allyrion"
+                android:text="cargando..."
                 android:textColor="@color/purple_700"
                 />
         </LinearLayout>
@@ -87,12 +122,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Miembros leales: "
+                android:text="Heir: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvHeir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delonne Allyrion\nYnys Yronwood\nDaemon Sand\nRyon Allyrion"
+                android:text="cargando..."
                 android:textColor="@color/purple_700"
                 />
         </LinearLayout>
@@ -105,12 +141,118 @@
                 android:text="Overlord: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvOverlord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="House Nymeros Martell of Sunspear"
+                android:text="cargando..."
                 android:textColor="@color/purple_700"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Founded: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvFounded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                android:textColor="@color/purple_700"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Founder: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvFounder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                android:textColor="@color/purple_700"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DiedOut: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvDiedOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                android:textColor="@color/purple_700"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ancestral Weapons: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvAncestralWeapons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadet Branches: "
+                android:textStyle="bold"></TextView>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCadetBranches"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miembros leales: "
+                android:textStyle="bold"></TextView>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSwornMembers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

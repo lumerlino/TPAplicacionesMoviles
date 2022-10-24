@@ -8,6 +8,8 @@ import com.squareup.moshi.JsonClass
 @DatabaseTable(tableName = "casadata")
 data class CasaData(
     @DatabaseField(id = true)
+    var id : Int = 0,
+    @DatabaseField
     var url : String="",
     @DatabaseField
     var name : String="",
@@ -17,8 +19,12 @@ data class CasaData(
     var coatOfArms : String="",
     @DatabaseField
     var words : String="",
-    //var titles : List<String>,
-    //var seats : List<String>,
+    var titles : List<String> = ArrayList(),
+    @DatabaseField
+    var titlesString : String="",
+    var seats : List<String> = ArrayList(),
+    @DatabaseField
+    var seatsString : String="",
     @DatabaseField
     var currentLord : String="",
     @DatabaseField
@@ -31,9 +37,15 @@ data class CasaData(
     var founder : String="",
     @DatabaseField
     var diedOut : String="",
-    //var ancestralWeapons : List<String>,
-    //var cadetBranches : List<String>,
-    //var swornMembers : List<String>,
+    var ancestralWeapons : List<String> = ArrayList(),
+    @DatabaseField
+    var ancestralWeaponsString : String="",
+    var cadetBranches : List<String> = ArrayList(),
+    @DatabaseField
+    var cadetBranchesString : String = "",
+    var swornMembers : List<String> = ArrayList(),
+    @DatabaseField
+    var swornMembersString : String = "",
     @DatabaseField
     var page : Int=0,
 )
