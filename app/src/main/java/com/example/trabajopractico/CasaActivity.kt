@@ -107,18 +107,18 @@ class CasaActivity : AppCompatActivity() {
     }
 
     private fun setDataToView(casa: CasaData) {
-        tvName.text = casa.name
-        tvRegion.text = casa.region
-        tvCoatOfArms.text = casa.coatOfArms
-        tvWords.text = casa.words
+        tvName.text = casa.name.ifEmpty { "-" }
+        tvRegion.text = casa.region.ifEmpty { "-" }
+        tvCoatOfArms.text = casa.coatOfArms.ifEmpty { "-" }
+        tvWords.text = casa.words.ifEmpty { "-" }
         tvTitles.text = convertStringList(casa.titles)
         tvSeats.text = convertStringList(casa.seats)
         loadCharacterForTv(casa.currentLord,tvCurrentLord)
         loadCharacterForTv(casa.heir,tvHeir)
         loadHouseForTv(casa.overlord, tvOverlord)
-        tvFounded.text = casa.founded
+        tvFounded.text = casa.founded.ifEmpty { "-" }
         loadCharacterForTv(casa.founder, tvFounder)
-        tvDiedOut.text = casa.diedOut
+        tvDiedOut.text = casa.diedOut.ifEmpty { "-" }
         tvAncestralWeapons.text = convertStringList(casa.ancestralWeapons)
 
         rvSwornMembers.adapter = ItemTextAdapter(this, createListItemTextForAdapter("PERSONAJE", casa.swornMembers))

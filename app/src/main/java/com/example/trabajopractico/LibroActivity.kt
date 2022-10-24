@@ -97,13 +97,13 @@ class LibroActivity : AppCompatActivity() {
     }
 
     private fun setDataToView(libro: LibroData) {
-        tvName.text = libro.name
-        tvIsbn.text = libro.isbn
+        tvName.text = libro.name.ifEmpty { "-" }
+        tvIsbn.text = libro.isbn.ifEmpty { "-" }
         tvNumberOfPages.text = libro.numberOfPages.toString()
-        tvPublisher.text = libro.publisher
-        tvCountry.text = libro.country
-        tvMediaType.text = libro.mediaType
-        tvReleased.text = libro.released
+        tvPublisher.text = libro.publisher.ifEmpty { "-" }
+        tvCountry.text = libro.country.ifEmpty { "-" }
+        tvMediaType.text = libro.mediaType.ifEmpty { "-" }
+        tvReleased.text = libro.released.ifEmpty { "-" }
         tvAuthors.text = convertStringList(libro.authors)
         rvPovCharacters.adapter = ItemTextAdapter(this, createListItemTextForAdapter("PERSONAJE", libro.povCharacters))
         rvCharacters.adapter = ItemTextAdapter(this, createListItemTextForAdapter("PERSONAJE", libro.characters))

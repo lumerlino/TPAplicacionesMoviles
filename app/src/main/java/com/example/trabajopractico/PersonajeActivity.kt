@@ -113,11 +113,11 @@ class PersonajeActivity : AppCompatActivity() {
     }
 
     private fun setDataToView(personaje: PersonajeData) {
-        tvName.text = personaje.name
-        tvGender.text = personaje.gender
-        tvCulture.text = personaje.culture
-        tvBorn.text = personaje.born
-        tvDied.text = personaje.died
+        tvName.text = personaje.name.ifEmpty { "-" }
+        tvGender.text = personaje.gender.ifEmpty { "-" }
+        tvCulture.text = personaje.culture.ifEmpty { "-" }
+        tvBorn.text = personaje.born.ifEmpty { "-" }
+        tvDied.text = personaje.died.ifEmpty { "-" }
         tvTitles.text = convertStringList(personaje.titles)
         tvAliases.text = convertStringList(personaje.aliases)
         loadCharacterForTv(personaje.father,tvFather)

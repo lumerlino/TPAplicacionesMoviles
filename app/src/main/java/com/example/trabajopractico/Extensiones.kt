@@ -27,7 +27,7 @@ fun convertStringList(list : List<String>): String {
             result += "\n"
         }
     }
-    return result
+    return result.ifEmpty { "-" }
 }
 
 fun Context.loadCharacterForTv(url : String, tv : TextView){
@@ -201,6 +201,11 @@ fun createListItemTextForAdapter(type:String, urls:List<String>) : List<ItemText
         val item = ItemText()
         item.type = type
         item.url = url
+        res.add(item)
+    }
+    if(res.isEmpty()){
+        val item = ItemText()
+        item.type = "VACIO"
         res.add(item)
     }
     return res
