@@ -50,6 +50,9 @@ public class PersonajeDataManager {
     public void agregarPersonajeData(PersonajeData personajeData) throws Exception{
         PersonajeData personaje = getPersonajeData(personajeData.getId());
         if(personaje==null) dao.create(personajeData);
+        else{
+            if(personaje.getPage()==0) dao.update(personajeData);
+        }
     }
     public PersonajeData getPersonajeData(int id) throws Exception{
         return dao.queryForId(id);

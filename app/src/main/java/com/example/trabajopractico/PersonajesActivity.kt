@@ -85,7 +85,9 @@ class PersonajesActivity : AppCompatActivity() {
                             val gson = Gson()
                             for(personaje in personajesData){
                                 val newPersonajeId = personaje.url.takeLastWhile{ caracter -> caracter!='/' }.toInt()
-                                val libToAdd = Personaje(newPersonajeId,personaje.name)
+                                var newPersonajeName = personaje.name
+                                if(newPersonajeName.isEmpty()) newPersonajeName = "ID: $newPersonajeId"
+                                val libToAdd = Personaje(newPersonajeId,newPersonajeName)
                                 personajes.add(libToAdd)
                                 //guardado en la base para cache:
                                 personaje.page = pag
@@ -126,7 +128,10 @@ class PersonajesActivity : AppCompatActivity() {
             Log.d("DB", "trayendo personajes de la base")
             val personajesData = insPersonajeDataMan.getPersonajesData(pag)
             for(personaje in personajesData){
-                val libToAdd = Personaje(personaje.url.takeLastWhile{ caracter -> caracter!='/' }.toInt(),personaje.name)
+                val newPersonajeId = personaje.url.takeLastWhile{ caracter -> caracter!='/' }.toInt()
+                var newPersonajeName = personaje.name
+                if(newPersonajeName.isEmpty()) newPersonajeName = "ID: $newPersonajeId"
+                val libToAdd = Personaje(newPersonajeId,newPersonajeName)
                 personajes.add(libToAdd)
             }
             adapter =

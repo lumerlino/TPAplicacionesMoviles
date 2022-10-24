@@ -51,6 +51,9 @@ public class CasaDataManager {
     public void agregarCasaData(CasaData casaData) throws Exception{
         CasaData casa = getCasaData(casaData.getId());
         if(casa==null) dao.create(casaData);
+        else{
+            if(casa.getPage()==0) dao.update(casaData);
+        }
     }
     public CasaData getCasaData(int id) throws Exception{
         return dao.queryForId(id);

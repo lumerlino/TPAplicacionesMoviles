@@ -39,13 +39,9 @@ public class ItemTextAdapter extends RecyclerView.Adapter<ItemTextAdapter.ItemTe
             ExtensionesKt.loadCharacterForTv(this.context,itemTexts.get(position).getUrl(), holder.tvItemText);
         }else if(itemTexts.get(position).getType()=="CASA"){
             ExtensionesKt.loadHouseForTv(this.context,itemTexts.get(position).getUrl(), holder.tvItemText);
+        }else if(itemTexts.get(position).getType()=="LIBRO"){
+            ExtensionesKt.loadBookForTv(this.context,itemTexts.get(position).getUrl(), holder.tvItemText);
         }
-        /*holder.tvItemText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClickListener.onItemClickListener(itemTexts.get(holder.getAdapterPosition()));
-            }
-        });*/
     }
 
     @Override

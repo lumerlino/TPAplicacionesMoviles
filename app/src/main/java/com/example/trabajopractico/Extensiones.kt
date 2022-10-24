@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.trabajopractico.DetailAdapter.ItemText
 import com.example.trabajopractico.cache.CasaDataManager
+import com.example.trabajopractico.cache.LibroDataManager
 import com.example.trabajopractico.cache.PersonajeDataManager
 import com.google.gson.Gson
 import retrofit2.Call
@@ -54,13 +55,19 @@ fun Context.loadCharacterForTv(url : String, tv : TextView){
                     if (personaje != null) {
                         val newPersonajeId =
                             personaje.url.takeLastWhile { caracter -> caracter != '/' }.toInt()
+                        var newPersonajeName = personaje.name
+                        if(newPersonajeName.isEmpty()) newPersonajeName = "ID: $newPersonajeId"
                         val gson = Gson()
                         personaje.id = newPersonajeId
-                        tv.text = personaje.name
-                        //personaje.titlesString = gson.toJson(personaje.titles)
-                        //personaje.seatsString = gson.toJson(personaje.seats)
+                        tv.text = newPersonajeName
+                        personaje.titlesString = gson.toJson(personaje.titles)
+                        personaje.aliasesString = gson.toJson(personaje.aliases)
+                        personaje.allegiancesString = gson.toJson(personaje.allegiances)
+                        personaje.booksString = gson.toJson(personaje.books)
+                        personaje.tvSeriesString = gson.toJson(personaje.tvSeries)
+                        personaje.playedByString = gson.toJson(personaje.playedBy)
                         insPersonajeDataMan.agregarPersonajeData(personaje)
-                        asignFunctionOnText(personaje.id,personaje.name)
+                        asignFunctionOnText(personaje.id,newPersonajeName)
                     }
                 }
 
@@ -72,8 +79,12 @@ fun Context.loadCharacterForTv(url : String, tv : TextView){
         }
         else{
             Log.d("BD", "Cache, pido personaje a la bdd")
-            tv.text = res.name
-            asignFunctionOnText(res.url.takeLastWhile { caracter -> caracter != '/' }.toInt(),res.name)
+            val newPersonajeId =
+                res.url.takeLastWhile { caracter -> caracter != '/' }.toInt()
+            var newPersonajeName = res.name
+            if(newPersonajeName.isEmpty()) newPersonajeName = "ID: $newPersonajeId"
+            tv.text = newPersonajeName
+            asignFunctionOnText(newPersonajeId,newPersonajeName)
         }
     }else{
         tv.text = "-"
@@ -125,6 +136,57 @@ fun Context.loadHouseForTv(url : String, tv : TextView){
         }
         else{
             Log.d("BD", "Cache, pido casa a la bdd")
+            tv.text = res.name
+            asignFunctionOnText(res.url.takeLastWhile { caracter -> caracter != '/' }.toInt(),res.name)
+        }
+    }else{
+        tv.text = "-"
+    }
+}
+fun Context.loadBookForTv(url : String, tv : TextView){
+    if(!url.isEmpty()){
+        fun asignFunctionOnText(id: Int, name: String) {
+            tv.setOnClickListener(View.OnClickListener {
+                Log.i("TODO", "Se apretó el botón Libro")
+                val libro_activity = Intent(this, LibroActivity::class.java)
+                libro_activity.putExtra("name", name)
+                libro_activity.putExtra("id", id.toString())
+                startActivity(libro_activity)
+            })
+        }
+
+        val libroId = url.takeLastWhile{ caracter -> caracter!='/' }.toInt()
+        val insLibroDataMan = LibroDataManager.getInstancia(this)
+        val res = insLibroDataMan.getLibroData(libroId)
+        if(res == null) {
+            Log.d("REST", "No Cache, pido libro a la api")
+            val api = RetrofitClient.retrofit.create(LibroAPI::class.java)
+            val callGetLibro = api.getLibro(libroId)
+            callGetLibro.enqueue(object : retrofit2.Callback<LibroData> {
+                override fun onResponse(call: Call<LibroData>, response: Response<LibroData>) {
+                    val libro = response.body()
+                    if (libro != null) {
+                        val newLibroId =
+                            libro.url.takeLastWhile { caracter -> caracter != '/' }.toInt()
+                        val gson = Gson()
+                        libro.id = newLibroId
+                        tv.text = libro.name
+                        libro.authorsString = gson.toJson(libro.authors)
+                        libro.charactersString = gson.toJson(libro.characters)
+                        libro.povCharactersString = gson.toJson(libro.povCharacters)
+                        insLibroDataMan.agregarLibroData(libro)
+                        asignFunctionOnText(libro.id,libro.name)
+                    }
+                }
+
+                override fun onFailure(call: Call<LibroData>, t: Throwable) {
+                    Log.e("REST", t.message ?: "")
+                }
+            }
+            )
+        }
+        else{
+            Log.d("BD", "Cache, pido libro a la bdd")
             tv.text = res.name
             asignFunctionOnText(res.url.takeLastWhile { caracter -> caracter != '/' }.toInt(),res.name)
         }

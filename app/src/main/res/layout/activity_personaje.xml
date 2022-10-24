@@ -22,9 +22,10 @@
                 android:text="Nombre Completo: "
                 android:textStyle="bold"></TextView>
             <TextView
-                android:id="@+id/tvNombre"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="cargando..."
                 />
         </LinearLayout>
         <LinearLayout
@@ -36,9 +37,11 @@
                 android:text="Género: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"/>
+                android:text="cargando..."
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,12 +49,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nacimiento: "
+                android:text="Cultura: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvCulture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="In 283 AC"/>
+                android:text="cargando..."
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,12 +64,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fallecimiento: "
+                android:text="Fecha Nacimiento: "
                 android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvBorn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Information"/>
+                android:text="Fecha Fallecimiento: "
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvDied"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cargando..."
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,9 +97,10 @@
                 android:text="Títulos: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvTitles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lord Commander of the Night's Watch"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,10 +111,10 @@
                 android:text="Alias: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvAliases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lord Snow\nNed Stark's Bastard\nThe Snow of Winterfell\nThe Crow-Come-Over\nThe 998th Lord Commander of the Night's Watch\nThe Bastard of Winterfell\nThe Black Bastard of the Wall\nLord Crow"
-                />
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,10 +125,11 @@
                 android:text="Padre: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvFather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Information"
-                />
+                android:text="cargando..."
+                android:textColor="@color/purple_700"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,10 +140,11 @@
                 android:text="Madre: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvMother"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Information"
-                />
+                android:text="cargando..."
+                android:textColor="@color/purple_700"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,43 +152,56 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cónyuge: "
+                android:text="Pareja: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvSpouse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Information"
-                />
+                android:text="cargando..."
+                android:textColor="@color/purple_700"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lealtades: "
+                android:text="Casas Aliadas: "
                 android:textStyle="bold"></TextView>
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="House Stark of Winterfell"
-                android:textColor="@color/purple_700"
-                />
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAllegiances"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Libros: "
                 android:textStyle="bold"></TextView>
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A Feast for Crows"
-                android:textColor="@color/purple_700"
-                />
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBooks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,28 +209,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Libros desde su punto de vista: "
+                android:text="Series Tv: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvTvSeries"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A Game of Thrones\nA Clash of Kings\nA Storm of Swords\nA Dance with Dragons"
-                android:textColor="@color/purple_700"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Serie televisiva: "
-                android:textStyle="bold"></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Temporada 1\nTemporada 2\nTemporada 3\nTemporada 4\nTemporada 5\nTemporada 6"
-                />
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -203,10 +226,10 @@
                 android:text="Interpretado por: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvPlayedBy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kit Harington"
-                />
+                android:text="cargando..."/>
         </LinearLayout>
 
     </LinearLayout>

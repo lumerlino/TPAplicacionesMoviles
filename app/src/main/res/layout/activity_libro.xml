@@ -9,6 +9,9 @@
     <include
         android:id="@+id/mi_toolbar"
         layout="@layout/toolbar_principal" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,9 +53,10 @@
                 android:text="Autores: "
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvAuthors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[TODO]"/>
+                android:text="cargando..."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,34 +134,47 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Personajes: "
                 android:textStyle="bold"></TextView>
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delonne Allyrion\nYnys Yronwood\nDaemon Sand\nRyon Allyrion"
-                android:textColor="@color/purple_700"
-                />
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCharacters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Punto de vista del personaje: "
+                android:text="Personajes POV: "
                 android:textStyle="bold"></TextView>
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delonne Allyrion\nYnys Yronwood\nDaemon Sand\nRyon Allyrion"
-                android:textColor="@color/purple_700"
-                />
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPovCharacters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_itemtext"/>
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>
