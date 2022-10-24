@@ -6,4 +6,10 @@
     <string name="texto_item_volver">Volver</string>
     <string name="texto_item_favorito">Favorito</string>
     <string name="btn_guardar_personaje_fav">Agregar a Favoritos</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
